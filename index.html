@@ -5,13 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /*สิ่งที่อยู่ตรงนี้จะมีไว้แค่ให้ div อ่าน*/
+        @font-face{
+            font-family: 'kanit';
+            src: url('./Kanit/Kanit-Regular.ttf')
+        }
+        body{
+           font-family: 'kanit';
+        
+        }
+        #Register{
+            font-size: 24px;
+            color: blue;
+            font-size: 24px;
+            font-weight: 800;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: pink;
+            border: 1px solid black
+        }
+        .header-form{
+            font-weight: 800;
+        }
+        .gender{
+            display:flex
+            flex-direction: row-reverse;
+        }
+        .relative{
+            position: relative;
+            left: 20px;
+        
+        }
+        .absolute{
+        position: absolute;
+        top:0;
+        right: 0;
+       
+       
+        }
+        .fixed{
+        position: absolute;
+        top:0;
+        right: 0; 
+         }
+        .sticky{
+            position: sticky;
+            top: 50px;
+        }
+        .container{
+            height: 1800px;
+        }
+  
+  
+    </style>
 </head>
 <body>
-    <h1>Register Form</h1>
-    ชื่อ<input type="text"> <br>
-    นามสกุล<input type="text">
-    อายุ<input type="number" min="0" max="150">
-    <div>
+    <div class="container">
+        <div class="static">Static</div>
+        <div class="relative">relative</div>
+        <div class="absolute">absolute</div>
+        <div class="fixed">Fixed</div>
+        <div class="sticky">Sticky</div>
+    </div>
+    <div class="container">
+        <div class="item-left">Left</div>
+        <div class="item-right">Right</div>
+    </div>
+    <div calss="grid-container">
+        <div class="grid-item-1">item 1</div>
+        <div class="grid-item-2">item 2</div>
+        <div class="grid-item-3">item 3</div>
+        <div class="grid-item-4">item 4</div>
+    </div>
+
+    <h1 id="Register">Register Form</h1>
+    <span class="hear-form"> ชื่อ</span> 
+    <input class="form" type="text"> <br>
+    <spanc class="hear-form">นามสกุล</span>
+    <input class="form"type="text">
+    <span class="hear-form"> อายุ</span>
+    <input class="form"type="number" min="0" max="150">
+    <div class="gender">
         เพศ
         <div>
             <input name="gender" type="radio"> ชาย
