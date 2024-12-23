@@ -1,128 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--ส่วนที่ไม่แสดงออกหน้าเว็บ-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        /*สิ่งที่อยู่ตรงนี้จะมีไว้แค่ให้ div อ่าน*/
-        @font-face{
-            font-family: 'kanit';
-            src: url('./Kanit/Kanit-Regular.ttf')
-        }
-        body{
-           font-family: 'kanit';
+     <style>
         
+        @font-face {
+            font-family: 'Kanit';
+            src: url(./Kanit/Kanit-Regular.ttf);
         }
-        #Register{
-            font-size: 24px;
-            color: blue;
-            font-size: 24px;
-            font-weight: 800;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin-top: 10px;
+        body {
+            font-family: 'Kanit';
+        }
+        .container {
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: azure;
+            padding: 20px;
+        }
+        .header {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom:20px;
+        }
+        .header-form {
+            width: 140px;
+        }
+        .flex {
+            display: flex;
+        }
+        .form-input {
             margin-bottom: 10px;
-            background-color: pink;
-            border: 1px solid black
         }
-        .header-form{
-            font-weight: 800;
+        input.form,textarea {
+            border: 1px solid black;
+            width: 100%;
         }
-        .gender{
-            display:flex
-            flex-direction: row-reverse;
+        .center {
+            text-align: center;
         }
-        .relative{
-            position: relative;
-            left: 20px;
-        
+        .button {
+            border: 0;
+            width: 100%;
+            height: 40px;
         }
-        .absolute{
-        position: absolute;
-        top:0;
-        right: 0;
        
-       
-        }
-        .fixed{
-        position: absolute;
-        top:0;
-        right: 0; 
-         }
-        .sticky{
-            position: sticky;
-            top: 50px;
-        }
-        .container{
-            height: 1800px;
-        }
-  
-  
-    </style>
+     </style>
 </head>
 <body>
     <div class="container">
-        <div class="static">Static</div>
-        <div class="relative">relative</div>
-        <div class="absolute">absolute</div>
-        <div class="fixed">Fixed</div>
-        <div class="sticky">Sticky</div>
-    </div>
-    <div class="container">
-        <div class="item-left">Left</div>
-        <div class="item-right">Right</div>
-    </div>
-    <div calss="grid-container">
-        <div class="grid-item-1">item 1</div>
-        <div class="grid-item-2">item 2</div>
-        <div class="grid-item-3">item 3</div>
-        <div class="grid-item-4">item 4</div>
-    </div>
-
-    <h1 id="Register">Register Form</h1>
-    <span class="hear-form"> ชื่อ</span> 
-    <input class="form" type="text"> <br>
-    <spanc class="hear-form">นามสกุล</span>
-    <input class="form"type="text">
-    <span class="hear-form"> อายุ</span>
-    <input class="form"type="number" min="0" max="150">
-    <div class="gender">
-        เพศ
+        <div class="header"> 
+            Register form
+        </div>
+      <div class="flex form-input">
+      <div class="header-form">ชื่อ</div>
+      <input class="form" type="text">
+      </div> 
+      <div class="flex form-input">
+    <div class="header-form">นามสกุล</div>
+    <input class="form" type="text">
+      </div>
+      <div class="flex form-input">
+      <div class="header-form">อายุ</div>
+      <input class="form" type="number" min="0" max="100"> 
+      </div>
+    <div class="flex gender form-input">
+    <div class="gender form">เพศ</div>
         <div>
             <input name="gender" type="radio"> ชาย
+            <input name="gender" type="radio"> หญิง
+            <input name="gender" type="radio"> อื่นๆ   
+        </div>
+    </div>   
+    <div class="form-input">
+        สิ่งที่สนใจ
+        <div>
+            <input name="interest" type="checkbox"> เรียน  
         </div>
         <div>
-            <input name="gender" type="radio">หญิง
+            <input name="hobby" type="checkbox"> เล่นเกม
+        </div>    
+            <div>    
+            <input name="hobby" type="checkbox"> อ่านหนังสือ  
         </div>
-        <div>
-            <input name="gemder" type="radio"> อื่นๆ
-            </div>
-        </div>
-        <div>
-            งานแอดิเรก
-            <div>
-            <input name="้hobby" type="checkbox"> อ่านหนังสือ
-            </div>
-            <div>
-            <input name="hobby" type="checkbox"> ดูหนัง
-            </div>
-            <div>
-            <input name="hobby" type="checkbox"> ฟังเพลง
-            </div>
-        </div>
-        <div>
-            คำอธิบาย
-            <textarea></textarea>
-        </div>
-        <button>ส่งข้อมูล</button>
-        
-        </body>
-        </html>
-        
-        
     </div>
-    
+    <div class="form-input">
+        คำอธิบายตัวเอง
+        <div>
+        <textarea></textarea>
+    </div>
+    <div class="center">
+        <button>ส่งข้อมูล</button>
+    </div>
+    </div>
 </body>
+
 </html>
