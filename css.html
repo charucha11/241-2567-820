@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: red;
+        }
+        @media (max-width: 768px){
+            .container{
+                background-color: blue;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        Hello World Breakpoint
+    </div>
+    <picture>
+        <source media="(max-width : 768px)" srcset="https://picsum.photos/id/237/200/300">
+        <img src="https://picsum.photos/id/237/200/300">
+    </picture>
+</body>
+</html>
