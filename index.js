@@ -1,25 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <input type="radio" name="gender" value="=ชาย" onchange="changeGender()">ชาย
-    <input type="radio" name="gender" value="=หญิง" onchange="changeGender()">หญิง
-    <input type="radio" name="gender" value="=อื่นๆ" onchange="changeGender()">อื่นๆ
-    <script>
-    function changeGender() {
-        let genderInputs = document.querySelectorAll('input[name=gender]');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql2/promise');
+const app = express();
 
-        for (let i =0 ; i <genderInputs.length; i++) {
-            if(genderInputs[i].checked){
-        console.log(genderInputs[i].value);
-            }
-        }    
-    }    
+const port = 8000;
+
+app.use(bodyParser.json());
+
+let users = []
+
+let conn = null
+const initMySQL = async () => {
+    conn = await mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'webdb',
+        port: 8850
+    })
+}
+
+// path = GET /users สำหรับ get user ทั้งหมดที่บันทีกไว้
+app.get('/users', async (req, res) => {
+    const result = await conn.query('SELECT * FROM users')
+    res.json(result[0])
+})
+
+
+// path = post /user ใช้สำหรับสร้างข้อมูล user ใหม่
+
+app.post('/users', async(req, res) => { 
+    let user = req.body;
+    const result = conn.query('INSERT INTO user SET ?',   users) 
+    console.log ('results', result)
+    res.json({
+        message: 'Create user successfully',
+        data: result[0]
+    })
+
+})
+
+
+
+// path = GET /users สำหรับ get user ทั้งหมดที่บันทีกไว้
+app.get('/users/: id', (req, res) => {
+    let id = req.params.id;
+    let selectedUser = users.find(user => user.id == id);
+
+    res.json(users[selectedIndex]);
+})
+
+
+// path:PUT /users/:id ใช้สำหรับเเก้ไขข้อมูล user โดยใช้ id เป็นตัวระบุ
+// get post put ใช้ได้หมด
+app.put('/users/:id', (req, res) => {
+    let id = req.params.id; 
+    let updateUser = req.body;
+    let selectedIndex = users.findIndex(user => user.id == id );
     
-    </script>
-</body>
-</html>
+        users[selectedIndex].firstname = updateUser.firstname || users[selectedIndex].firstname;
+        users[selectedIndex].lastname = updateUser.lastname || users[selectedIndex].lastname;
+        users[selectedIndex].age = updateUser.age || users[selectedIndex].age;
+        users[selectedIndex].gender = updateUser.gender || users[selectedIndex].gender
+    
+    res.json({
+        message: 'Update user successfully',
+        data:{
+            user: updateUser,
+            indexUpdated : selectedIndex
+        }
+    }) 
+    res.send(id) 
+})
+
+//path: DELETE /user/:id ใช้สำหรับลบข้อมูล user โดยใช้ id เป็นตัวระบุ
+app.delete('/users/:id', (req, res) => {
+    let id = req.params.id;
+    let selectedIndex = users.findIndex(user => user.id == id);})
+
+app.listen(port, async () => {
+    await initMySQL();
+    console.log('HTTP Server is running on port '+{port});
+});
