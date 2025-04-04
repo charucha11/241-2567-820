@@ -5,24 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container{
-            background-color: red;
+        /*
+        .container {
+            display: flex;
         }
-        @media (max-width: 768px){
-            .container{
-                background-color: blue;
+        .container .item{
+            padding: 10px;
+            flex: 1;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .grid-container .item{
+            padding: 10px;
+            background-color: yellow;
+            flex: 1;
+        }
+        /*tablet*/
+        /*
+        @media screen and (max-width: 768px){
+            .container {
+                flex-direction: column;
+            } 
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
             }
         }
-
+        */  
+        /*mobile*/
+        /*
+        @media screen and (max-width: 640px){
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+        }
+        */
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    /*Desktop*/
+    .desktop ul{
+        display: flex;
+    }
+    .desktop ul > li{
+        margin-right: 20px;
+    }
+    .mobile-menu,
+    .mobile {
+        display: none;
+    }
+    @media screen and (max-width: 768px){
+        .desktop{
+            display: none;
+        }
+        .mobile-menu{
+            display: block;
+        }
+        .mobile-menu:hover + .mobile{ 
+            display: block;
+        }
+    }
     </style>
 </head>
 <body>
-    <div class="container">
-        Hello World Breakpoint
+    <div class="desktop">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
     </div>
-    <picture>
-        <source media="(max-width : 768px)" srcset="https://picsum.photos/id/237/200/300">
-        <img src="https://picsum.photos/id/237/200/300">
-    </picture>
+    <div class="mobile-menu">Menu</div>
+    <div class="mobile">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </div>
 </body>
 </html>
